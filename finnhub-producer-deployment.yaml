@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finnhub-producer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finnhub-producer
+  template:
+    metadata:
+      labels:
+        app: finnhub-producer
+    spec:
+      containers:
+      - name: finnhub-producer
+        image: finnhub_producer
+        env:
+        - name: FINNHUB_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: finnhub-secrets
+              key: api-key

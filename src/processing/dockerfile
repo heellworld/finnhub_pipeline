@@ -1,0 +1,7 @@
+FROM bitnami/spark:3.5.1
+
+# Copy mã nguồn
+COPY processing_data.py /app/
+
+# Run Spark Streaming App
+ENTRYPOINT ["spark-submit", "/app/processing_data.py"]

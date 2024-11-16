@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finnhub-api
+  labels:
+    app: finnhub-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: finnhub-api
+  template:
+    metadata:
+      labels:
+        app: finnhub-api
+    spec:
+      containers:
+      - name: finnhub-api
+        image: heellworld/finnhub-api:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PRESTO_URL
+          value: "http://presto-service:8090/v1/statement"
+        - name: OTHER_ENV_VAR
+          value: "some-value"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: finnhub-api-service
+spec:
+  selector:
+    app: finnhub-api
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
