@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 # Cấu hình Presto REST API
-PRESTO_URL = "http://127.0.0.1:8090/v1/statement"  # Địa chỉ Presto REST API
+PRESTO_URL = "https://899b-59-153-230-59.ngrok-free.app/v1/statement"  # Địa chỉ Presto REST API
 PRESTO_HEADERS = {
     "X-Presto-User": "flask_user",  # Tên người dùng cho Presto
     "X-Presto-Catalog": "cassandra",
