@@ -1,6 +1,8 @@
-# Finnhub API Docker Project
+# Finnhub Streaming Data Pipeline Project
 
-This project demonstrates how to run a Dockerized API to fetch stock data and save it for analysis.
+This project is to design pipeline and demonstrate how to run Docker API to fetch stock data of 4 BIGTECH including Facebook, Apple, Amazon, Google and save it for analysis.
+
+![image](https://github.com/user-attachments/assets/b3923007-74ef-4594-b39e-fe76cdc10386)
 
 ## Setup Instructions
 
