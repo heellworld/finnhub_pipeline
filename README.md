@@ -8,8 +8,76 @@ This project is to design pipeline and demonstrate how to run Docker API to fetc
 
 ### Prerequisites
 
-1. Docker installed on your system
-2. Access to Docker Hub to pull the prebuilt image
+1. Installed Ubutu on VM Vitualbox
+2. BigData tools includes: Hadoop, Kafka, Cassandra, Spark, Superset, Kubernetes, Presto installe on your system
+3. Docker installed on your system
+4. Access to Docker Hub to pull the prebuilt image
+
+## Instructions for running the project
+### 1. Clone project on github: 
+    git clone https://github.com/heellworld/finnhub_pipeline.git
+### 2. Launch components
+   #### Zookeeper và Kafka:
+   ```bash
+	sudo systemctl start zookeeper
+    sudo systemctl start kafka
+   ```
+   #### Hadoop:
+   ```bash
+	start-dfs.sh
+    start-yarn.sh
+    hadoop namenode -format
+    start-all.sh
+   ```
+   #### Cassandra:
+   ```bash
+	sudo systemctl start cassandra
+    nodetool status
+    ```
+   #### Minikube:
+   ```bash
+   minikube start
+   minikube status
+   kubectl cluster-info
+   ```
+   #### Superset:
+   ```bash
+   source supersetenv/bin/activate
+   superset run -p 8099 --with-threads --reload --debugger
+   ```
+### 4. Start Kubernetes
+   ```bash
+   kubectl get pods
+   kubectl get deployments
+   kubectl get services
+   ```
+### 5. Connect Cassandra to Presto
+   #### nano cassandra.properties
+   ```bash
+    connector.name=cassandra
+    cassandra.contact-points=127.0.0.1
+   ```
+   #### Connect
+   ```bash
+   cd presto-server-0.289
+   su root (login root)
+   bin/launcher start
+   bin/presto --server 127.0.0.1:8090 --catalog cassandra
+   ```
+### 6. Connect Presto to Superset
+   ```bash
+   presto://localhost:8090/cassandra
+   ```
+## Run Project
+### 1. Monitor the data scraping process from Finnhub
+   ```bash
+   kafka-console-consumer.sh --topic finnhub_data --from-beginning --bootstrap-server localhost:9092
+   ```
+### 2. Kafka-producer setup
+   ```bash
+   python kafka_producer.py
+   ```
+
 
 ## Steps to Run the API
 
