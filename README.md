@@ -73,11 +73,11 @@ This project is to design pipeline and demonstrate how to run Docker API to fetc
    ```bash
    kafka-console-consumer.sh --topic finnhub_data --from-beginning --bootstrap-server localhost:9092
    ```
-### 2. Kafka-producer setup
+### 2. Run kafka_prodecer.py to get data from the FinnhubAPI through Producer
+### 3. Run Spark Streaming to processing data into Cassandra
    ```bash
-   python kafka_producer.py
+   spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1,com.datastax.spark:spark-cassandra-connector_2.12:3.5.1 processing_data.py
    ```
-
 
 ## Steps to Run the API
 
