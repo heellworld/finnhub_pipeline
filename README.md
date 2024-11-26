@@ -1,4 +1,4 @@
-# Finnhub Streaming Data Pipeline Project
+# Real-time Financial Market Data Pipeline with Finnhub API and Kafka Project
 
 This project is to design pipeline and demonstrate how to run Docker API to fetch stock data of 4 BIGTECH including Facebook, Apple, Amazon, Google and save it for analysis.
 
