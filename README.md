@@ -2,7 +2,7 @@
 
 This project is to design pipeline and demonstrate how to run Docker API to fetch stock data of 4 BIGTECH including Facebook, Apple, Amazon, Google and save it for analysis.
 
-![image](https://github.com/user-attachments/assets/b3923007-74ef-4594-b39e-fe76cdc10386)
+![image](https://github.com/user-attachments/assets/8d955373-2293-423a-b3c5-28bfe24f7c94)
 
 ## Setup Instructions
 
